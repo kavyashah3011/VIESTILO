@@ -1,0 +1,132 @@
+/* ==========================================================================
+   VIESTILO — LUXURY ANIMATIONS & KEYFRAMES (ANIMATIONS.CSS)
+   Smooth Easing, Glowing Effects, Orbital Rotations & Particles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. KEYFRAME ANIMATIONS
+   -------------------------------------------------------------------------- */
+
+/* Spinner Rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Pulsing Glow */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.4;
+    }
+}
+
+/* Floating Motion */
+@keyframes floatSlow {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.float-item {
+    animation: floatSlow 6s ease-in-out infinite;
+}
+
+.delay-1 { animation-delay: 1.2s; }
+.delay-2 { animation-delay: 2.4s; }
+.delay-3 { animation-delay: 3.6s; }
+
+/* Aurora Float */
+@keyframes auroraMove {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(80px, -60px) rotate(180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+.aurora-1 {
+    animation: auroraMove 25s infinite alternate ease-in-out;
+}
+
+.aurora-2 {
+    animation: auroraMove 30s infinite alternate-reverse ease-in-out;
+}
+
+/* Toast Slide In */
+@keyframes toastIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Gold Border Glow Pulse */
+@keyframes goldBorderGlow {
+    0% { border-color: rgba(212, 175, 55, 0.2); }
+    50% { border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); }
+    100% { border-color: rgba(212, 175, 55, 0.2); }
+}
+
+.glow-card {
+    animation: goldBorderGlow 4s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. REVEAL & TRANSITION UTILITIES
+   -------------------------------------------------------------------------- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blur-reveal {
+    filter: blur(15px);
+    opacity: 0;
+    transition: filter 1s var(--ease-out), opacity 1s var(--ease-out);
+}
+
+.blur-reveal.in-view {
+    filter: blur(0px);
+    opacity: 1;
+}
+
+/* SplitType Character Animation */
+.word, .char {
+    display: inline-block;
+    transition: transform 0.6s var(--ease-out), opacity 0.6s var(--ease-out), filter 0.6s var(--ease-out);
+}
+
+.split-text .char {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-90deg);
+    filter: blur(6px);
+}
+
+.split-text.animated .char {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0px);
+}

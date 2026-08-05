@@ -1,0 +1,232 @@
+/* ==========================================================================
+   VIESTILO — RESPONSIVE MEDIA QUERIES (RESPONSIVE.CSS)
+   Mobile, Tablet, Desktop Breakpoints
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LAPTOPS & SMALL DESKTOPS (<= 1200px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .large-cta-title {
+        font-size: 4.8rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bento-lg {
+        grid-column: span 2;
+    }
+    
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .stat-box {
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .stat-box:nth-child(2) {
+        border-bottom: 1px solid var(--glass-border);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. TABLETS & LARGE PHONES (<= 992px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 992px) {
+    :root {
+        --navbar-height: 70px;
+    }
+    
+    .nav-links {
+        display: none; /* Hidden on tablet & mobile; accessible via hamburger drawer */
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero-title {
+        font-size: 3.2rem;
+    }
+    
+    .section-hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .large-cta-title {
+        font-size: 3.6rem;
+    }
+    
+    .floating-ingredients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .orbital-wrapper {
+        height: 550px;
+    }
+    
+    .ring-1 { width: 260px; height: 260px; }
+    .ring-2 { width: 380px; height: 380px; }
+    .ring-3 { width: 500px; height: 500px; }
+    
+    /* Timeline Stacking */
+    .timeline-line {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+        text-align: left !important;
+    }
+    
+    .timeline-left, .timeline-right {
+        left: 0;
+    }
+    
+    .timeline-left .timeline-node, .timeline-right .timeline-node {
+        left: 8px;
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .quickview-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE DEVICES (<= 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .section-padding {
+        padding: 5rem 0;
+    }
+    
+    .section-title {
+        font-size: 2.4rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .large-cta-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-subtext {
+        font-size: 1rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bento-lg {
+        grid-column: span 1;
+    }
+    
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .floating-ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-stats-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .orbital-wrapper {
+        height: 500px;
+    }
+
+    .orbit-node {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .custom-cursor, .cursor-follower {
+        display: none !important; /* Hide custom cursor on touch devices */
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. SMALL MOBILE (<= 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    .glass-navbar {
+        padding: 0 1.2rem;
+    }
+    
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .large-cta-title {
+        font-size: 2.2rem;
+    }
+    
+    .btn {
+        padding: 0.9rem 1.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 2.4rem;
+    }
+}

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIESTILO | Haute Parfumerie & Luxury Fragrances</title>
+    <meta name="description" content="Celebrate the art of living in style. Viestilo captures the vibrant essence of life, infusing each moment with refined elegance, 30% Extrait concentration, and rare imported botanicals.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="loading">
+
+    <!-- Ambient Lighting & Noise Texture -->
+    <div class="noise-overlay"></div>
+    <div class="spotlight" id="spotlight"></div>
+    <div class="aurora-glow aurora-1"></div>
+    <div class="aurora-glow aurora-2"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Frame Preloader Overlay -->
+    <div class="canvas-loader" id="canvas-loader">
+        <div class="loader-spinner"></div>
+        <p class="loader-text">VIESTILO HAUTE PARFUMERIE</p>
+        <span class="loader-percentage" id="load-progress">0%</span>
+    </div>
+
+    <!-- Fixed Hero Canvas Background -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- SECTION 1: Floating Glass Navbar (Hidden during hero scroll, reveals on collection scroll) -->
+    <header class="navbar-wrapper" id="navbar">
+        <nav class="glass-navbar">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo" id="nav-logo">
+                <span class="logo-text">VIESTILO</span>
+                <span class="logo-sub">PARIS</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="#hero-section" class="nav-link">Home</a></li>
+                <li><a href="#collection" class="nav-link active">Collection</a></li>
+                <li><a href="#ingredients" class="nav-link">Ingredients</a></li>
+                <li><a href="#timeline" class="nav-link">Notes</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#why-us" class="nav-link">About</a></li>
+                <li><a href="#newsletter" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Navbar Action Icons -->
+            <div class="nav-actions">
+                <button class="icon-btn" id="search-trigger" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="icon-btn" id="wishlist-trigger" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="icon-btn cart-btn" id="cart-trigger" aria-label="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="mobile-nav-overlay" id="mobile-nav">
+            <div class="mobile-nav-content glass-card">
+                <ul class="mobile-nav-links">
+                    <li><a href="#hero-section" class="mobile-link">Home</a></li>
+                    <li><a href="#collection" class="mobile-link">Collection</a></li>
+                    <li><a href="#ingredients" class="mobile-link">Ingredients</a></li>
+                    <li><a href="#timeline" class="mobile-link">Notes</a></li>
+                    <li><a href="#testimonials" class="mobile-link">Reviews</a></li>
+                    <li><a href="#why-us" class="mobile-link">About</a></li>
+                    <li><a href="#newsletter" class="mobile-link">Contact</a></li>
+                </ul>
+                <div class="mobile-footer">
+                    <p class="gold-accent">Haute Parfumerie Paris</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Hero Scroll Distance Container (1200vh) -->
+    <section class="hero-section" id="hero-section">
+        
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-indicator-bar">
+            <div class="scroll-indicator-fill" id="scroll-fill"></div>
+        </div>
+
+        <!-- Fixed Story Overlays Container (Ultra-Minimal Text) -->
+        <div class="story-overlays-container" id="story-container">
+
+            <!-- FRAME 10 - 60: Minimal Text 1 -->
+            <div class="story-step" id="story-step-1">
+                <span class="tagline-badge">VIESTILO HAUTE PARFUMERIE</span>
+                <h1 class="hero-title minimal-title">Living In Style.</h1>
+            </div>
+
+            <!-- FRAME 70 - 120: Minimal Text 2 -->
+            <div class="story-step" id="story-step-2">
+                <span class="tagline-badge">RARE ESSENCES</span>
+                <h2 class="hero-title minimal-title">Grasse & Mysore Accords.</h2>
+            </div>
+
+            <!-- FRAME 130 - 180: Minimal Text 3 -->
+            <div class="story-step" id="story-step-3">
+                <span class="tagline-badge">30% EXTRAIT CONCENTRATION</span>
+                <h2 class="hero-title minimal-title">12+ Hours Persistence.</h2>
+            </div>
+
+            <!-- FRAME 190 - 240: Minimal Text 4 & Discover CTA -->
+            <div class="story-step" id="story-step-4">
+                <span class="tagline-badge gold-glow">YOUR SIGNATURE AWAITS</span>
+                <h2 class="hero-title minimal-title large-cta-title">Own Your Signature.</h2>
+                <div class="hero-cta-group" style="margin-top: 1.8rem;">
+                    <a href="#collection" class="btn btn-gold magnetic-btn lg-btn">
+                        <span>Discover Collection</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: Signature Collection -->
+    <section class="section-padding collection-section" id="collection">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">EXQUISITE FRAGRANCES</span>
+                <h2 class="section-title">The Signature Collection</h2>
+                <p class="section-desc">Extrait de Parfum formulations infused with 30% concentration of imported raw essences.</p>
+            </div>
+
+            <!-- Product Filter Bar -->
+            <div class="collection-filters">
+                <button class="filter-btn active" data-filter="all">All Masterpieces</button>
+                <button class="filter-btn" data-filter="edp">Warm & Woody</button>
+                <button class="filter-btn" data-filter="extrait">Fresh & Floral</button>
+                <button class="filter-btn" data-filter="reserve">Rare Reserve</button>
+            </div>
+
+            <!-- Product Grid (5 Real Products) -->
+            <div class="product-grid">
+                
+                <!-- Product 1: Blood Eclipse -->
+                <div class="product-card glass-card tilt-card" data-category="extrait" data-id="1">
+                    <div class="card-badge">Bestseller</div>
+                    <div class="card-image-wrap">
+                        <img src="assets/products/blood_eclipse.jpg" alt="Blood Eclipse Luxury Perfume" class="real-bottle-img">
+                        <div class="card-hover-actions">
+                            <button class="action-btn quick-view-btn" data-id="1" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                            <button class="action-btn wishlist-btn" data-id="1" aria-label="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="fragrance-type">Extrait de Parfum</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (128)</span>
+                        </div>
+                        <h3 class="product-name">Blood Eclipse</h3>
+                        <p class="product-notes">Blood Orange • White Floral • Sandalwood</p>
+                        <div class="card-footer">
+                            <span class="product-price">₹2,499</span>
+                            <button class="btn btn-sm btn-gold add-cart-btn" data-id="1">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Midnight Noir -->
+                <div class="product-card glass-card tilt-card" data-category="edp" data-id="2">
+                    <div class="card-badge gold-badge">Rare Reserve</div>
+                    <div class="card-image-wrap">
+                        <img src="assets/products/midnight_noir.jpg" alt="Midnight Noir Luxury Perfume" class="real-bottle-img">
+                        <div class="card-hover-actions">
+                            <button class="action-btn quick-view-btn" data-id="2" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                            <button class="action-btn wishlist-btn" data-id="2" aria-label="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="fragrance-type">Parfum Intense</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 5.0 (214)</span>
+                        </div>
+                        <h3 class="product-name">Midnight Noir</h3>
+                        <p class="product-notes">Tuscan Leather • Black Amber • Bourbon Vanilla</p>
+                        <div class="card-footer">
+                            <span class="product-price">₹2,899</span>
+                            <button class="btn btn-sm btn-gold add-cart-btn" data-id="2">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Golden Oud -->
+                <div class="product-card glass-card tilt-card" data-category="reserve" data-id="3">
+                    <div class="card-badge royal-badge">Limited Edition</div>
+                    <div class="card-image-wrap">
+                        <img src="assets/products/golden_oud.jpg" alt="Golden Oud Luxury Perfume" class="real-bottle-img">
+                        <div class="card-hover-actions">
+                            <button class="action-btn quick-view-btn" data-id="3" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                            <button class="action-btn wishlist-btn" data-id="3" aria-label="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="fragrance-type">Elixir Pure Oud</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (189)</span>
+                        </div>
+                        <h3 class="product-name">Golden Oud</h3>
+                        <p class="product-notes">Cambodian Oud • Golden Amber • Kashmiri Saffron</p>
+                        <div class="card-footer">
+                            <span class="product-price">₹3,499</span>
+                            <button class="btn btn-sm btn-gold add-cart-btn" data-id="3">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Velvet Rose -->
+                <div class="product-card glass-card tilt-card" data-category="extrait" data-id="4">
+                    <div class="card-badge">Trending</div>
+                    <div class="card-image-wrap">
+                        <img src="assets/products/velvet_rose.jpg" alt="Velvet Rose Luxury Perfume" class="real-bottle-img">
+                        <div class="card-hover-actions">
+                            <button class="action-btn quick-view-btn" data-id="4" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                            <button class="action-btn wishlist-btn" data-id="4" aria-label="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="fragrance-type">Extrait de Parfum</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (96)</span>
+                        </div>
+                        <h3 class="product-name">Velvet Rose</h3>
+                        <p class="product-notes">Damask Rose • Pink Peony • White Musk</p>
+                        <div class="card-footer">
+                            <span class="product-price">₹2,299</span>
+                            <button class="btn btn-sm btn-gold add-cart-btn" data-id="4">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Ocean Mist -->
+                <div class="product-card glass-card tilt-card" data-category="edp" data-id="5">
+                    <div class="card-badge">Fresh Choice</div>
+                    <div class="card-image-wrap">
+                        <img src="assets/products/ocean_mist.jpg" alt="Ocean Mist Luxury Perfume" class="real-bottle-img">
+                        <div class="card-hover-actions">
+                            <button class="action-btn quick-view-btn" data-id="5" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                            <button class="action-btn wishlist-btn" data-id="5" aria-label="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="fragrance-type">Aqua Parfum</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (142)</span>
+                        </div>
+                        <h3 class="product-name">Ocean Mist</h3>
+                        <p class="product-notes">Marine Mineral • Atlas Cedar • Bergamot Citrus</p>
+                        <div class="card-footer">
+                            <span class="product-price">₹2,199</span>
+                            <button class="btn btn-sm btn-gold add-cart-btn" data-id="5">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Bento Grid -->
+    <section class="section-padding bento-section" id="bento">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">ENGINEERED ELEGANCE</span>
+                <h2 class="section-title">The Viestilo Standard</h2>
+                <p class="section-desc">Designed with meticulous craftsmanship, sustainability, and unmatched olfactory longevity.</p>
+            </div>
+
+            <!-- Apple-Style Bento Grid -->
+            <div class="bento-grid">
+                
+                <!-- Card 1 (Large 2-column) -->
+                <div class="bento-card glass-card bento-lg glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">12+ HOURS PERSISTENCE</span>
+                        <h3>Long Lasting Molecular Anchor</h3>
+                        <p>Our heavy molecular base notes lock into skin lipids, ensuring an intoxicating trail that lingers effortlessly from sunrise to midnight.</p>
+                    </div>
+                    <div class="bento-graphic bento-glow-circle"></div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card glass-card glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">FREE SHIPPING</span>
+                        <h3>Complimentary Delivery</h3>
+                        <p>Delivered directly to your doorstep with luxury gift wrapping, free of charge across India.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card glass-card glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">30% CONCENTRATION</span>
+                        <h3>Premium Imported Oils</h3>
+                        <p>Sourced directly from historical perfume capitals in Grasse, France and Mysore, India.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card glass-card glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-box-archive"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">ARCHITECTURAL DESIGN</span>
+                        <h3>Luxury Packaging</h3>
+                        <p>Heavy-weight crystal glass bottle encased in weighted soft-touch magnetic velvet presentation box.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Large 2-column) -->
+                <div class="bento-card glass-card bento-lg glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">GLOBAL COMPLIANCE</span>
+                        <h3>IFRA Certified Pure & Safe</h3>
+                        <p>Hypoallergenic, paraben-free, and dermatologically tested to be safe for all skin chemistry types across 40+ countries.</p>
+                    </div>
+                    <div class="bento-graphic bento-grid-lines"></div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bento-card glass-card glow-hover">
+                    <div class="bento-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                    <div class="bento-body">
+                        <span class="bento-tag">ETHICAL STANDARDS</span>
+                        <h3>100% Cruelty Free</h3>
+                        <p>Zero animal testing. Vegan formulations crafted in certified eco-sustainable European laboratories.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Ingredients Experience -->
+    <section class="section-padding ingredients-section" id="ingredients">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">THE ORBIT OF BOTANICALS</span>
+                <h2 class="section-title">Harmonious Elements</h2>
+                <p class="section-desc">Hover or tap any botanical element to explore how raw notes combine to form Viestilo's signature accord.</p>
+            </div>
+
+            <!-- Orbital Animation Canvas / Interactive System -->
+            <div class="orbital-wrapper">
+                <!-- Center Bottle Container with Real 3D Bottle Image -->
+                <div class="orbital-center-bottle">
+                    <img src="assets/products/bottle_center.png" alt="Viestilo 3D Perfume Bottle" class="real-center-bottle-img">
+                    <div class="bottle-glow-pulse"></div>
+                </div>
+
+                <!-- Orbit Ring 1 -->
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+
+                <!-- Orbiting Nodes (7 Ingredients) -->
+                <div class="orbiting-nodes-container" id="orbiting-container">
+                    
+                    <div class="orbit-node node-1 glass-card" data-name="Blood Orange" data-note="Top Note" data-desc="Vibrant Calabrian citrus providing an instant burst of radiant warmth and energy.">
+                        <i class="fa-solid fa-citrus"></i>
+                        <span>Blood Orange</span>
+                    </div>
+
+                    <div class="orbit-node node-2 glass-card" data-name="Damask Rose" data-note="Heart Note" data-desc="Hand-harvested Bulgarian rose petals giving a velvety, romantic floral core.">
+                        <i class="fa-solid fa-spa"></i>
+                        <span>Rose</span>
+                    </div>
+
+                    <div class="orbit-node node-3 glass-card" data-name="Night Jasmine" data-note="Heart Note" data-desc="Grasse night-blooming jasmine offering sensual depth and elegance.">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span>Jasmine</span>
+                    </div>
+
+                    <div class="orbit-node node-4 glass-card" data-name="Golden Amber" data-note="Base Note" data-desc="Warm balsamic amber resins that bind the fragrance smoothly to skin.">
+                        <i class="fa-solid fa-gem"></i>
+                        <span>Amber</span>
+                    </div>
+
+                    <div class="orbit-node node-5 glass-card" data-name="Bourbon Vanilla" data-note="Base Note" data-desc="Smoky Madagascar vanilla bean delivering a rich, addictive sweetness.">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>Vanilla</span>
+                    </div>
+
+                    <div class="orbit-node node-6 glass-card" data-name="Tuscan Leather" data-note="Base Note" data-desc="Sophisticated accord of aged leather and smoky woods for undeniable presence.">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Leather</span>
+                    </div>
+
+                    <div class="orbit-node node-7 glass-card" data-name="White Musk" data-note="Anchor Note" data-desc="Silky, clean white musk locking the entire sillage in place for 12+ hours.">
+                        <i class="fa-solid fa-wind"></i>
+                        <span>Musk</span>
+                    </div>
+
+                </div>
+
+                <!-- Ingredient Detail Box (Dynamic) -->
+                <div class="ingredient-detail-modal glass-card" id="ingredient-detail">
+                    <span class="ing-detail-note" id="ing-detail-note">Select an ingredient</span>
+                    <h3 class="ing-detail-title" id="ing-detail-title">Hover Or Tap An Orbit Node</h3>
+                    <p class="ing-detail-desc" id="ing-detail-desc">Discover how each carefully extracted botanical contributes to the sillage and longevity of Viestilo fragrances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Fragrance Timeline -->
+    <section class="section-padding timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">OLFACTORY EVOLUTION</span>
+                <h2 class="section-title">The Sillage Timeline</h2>
+                <p class="section-desc">Experience how the scent unfolds over hours upon contact with skin chemistry.</p>
+            </div>
+
+            <!-- Vertical Timeline Container -->
+            <div class="timeline-wrapper">
+                <div class="timeline-line">
+                    <div class="timeline-line-progress" id="timeline-progress"></div>
+                </div>
+
+                <!-- Timeline Items -->
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-node"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-time">0 - 30 MINUTES</span>
+                        <h3>Step 1: Top Notes</h3>
+                        <p>Calabrian Blood Orange, Bergamot, and Fresh Mineral Accords ignite the initial projection. An intoxicating wave of luminous energy.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-node"><i class="fa-solid fa-heart"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-time">30 MINS - 3 HOURS</span>
+                        <h3>Step 2: Heart Notes</h3>
+                        <p>As the top notes settle, the lush core of Grasse Night Jasmine, French Tuberose, and Damask Rose unfolds into romantic elegance.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-node"><i class="fa-solid fa-tree"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-time">3 - 8 HOURS</span>
+                        <h3>Step 3: Base Notes</h3>
+                        <p>Rich Mysore Sandalwood, Golden Amber Resins, and Tuscan Leather emerge, anchoring the perfume with velvety warmth and depth.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-node"><i class="fa-solid fa-infinity"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-time">8 - 12+ HOURS</span>
+                        <h3>Step 4: Long Lasting Dry Down</h3>
+                        <p>Silky White Musk and Madagascar Bourbon Vanilla lock into skin lipids, leaving an unforgettable, sophisticated trail that lasts past midnight.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Luxury Statistics -->
+    <section class="section-padding stats-section" id="stats">
+        <div class="container">
+            <div class="stats-grid glass-card">
+                
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3 class="counter-num" data-target="150">0</h3>
+                    <span class="counter-unit">K+</span>
+                    <p class="stat-desc">Discerning Patrons Worldwide</p>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3 class="counter-num" data-target="98">0</h3>
+                    <span class="counter-unit">%</span>
+                    <p class="stat-desc">Positive Review Rating</p>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3 class="counter-num" data-target="40">0</h3>
+                    <span class="counter-unit">+</span>
+                    <p class="stat-desc">Countries Shipped To</p>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h3 class="counter-num" data-target="12">0</h3>
+                    <span class="counter-unit">+</span>
+                    <p class="stat-desc">Hours Guaranteed Sillage</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Why Viestilo -->
+    <section class="section-padding why-section" id="why-us">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">THE PILLARS OF LUXURY</span>
+                <h2 class="section-title">Why Discerning Collectors Choose Viestilo</h2>
+            </div>
+
+            <div class="why-grid">
+                
+                <div class="why-card glass-card glow-hover">
+                    <div class="why-number">01</div>
+                    <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Luxury Materials</h3>
+                    <p>Heavy custom crystal bottles paired with solid brass precision caps engineered to satisfying weighted closure tolerances.</p>
+                </div>
+
+                <div class="why-card glass-card glow-hover">
+                    <div class="why-number">02</div>
+                    <div class="why-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <h3>30% Extrait Concentration</h3>
+                    <p>Unmatched perfume oil density resulting in intense depth and projection compared to standard department store EDTs.</p>
+                </div>
+
+                <div class="why-card glass-card glow-hover">
+                    <div class="why-number">03</div>
+                    <div class="why-icon"><i class="fa-solid fa-box"></i></div>
+                    <h3>Haute Packaging</h3>
+                    <p>Each bottle arrives encased in a velvet-lined magnetic display case complete with an embossed Certificate of Authenticity.</p>
+                </div>
+
+                <div class="why-card glass-card glow-hover">
+                    <div class="why-number">04</div>
+                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3>Cruelty Free & Safe</h3>
+                    <p>Ethically formulated without parabens, phthalates, or animal testing. IFRA certified safe for sensitive skin types.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: Circular Testimonials -->
+    <section class="section-padding testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">PATRON REVIEWS</span>
+                <h2 class="section-title">Endorsed By Connoisseurs</h2>
+                <p class="section-desc">Drag or let the circular carousel rotate to read authentic reflections from our clientele.</p>
+            </div>
+
+            <!-- Rotating Circular Testimonial Carousel -->
+            <div class="circular-testimonial-wrapper" id="testimonial-carousel">
+                <div class="circle-stage" id="circle-stage">
+                    
+                    <!-- Card 1 -->
+                    <div class="testimonial-card glass-card" data-index="0">
+                        <div class="user-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="user-quote">"People stop and ask me every single day which perfume I'm wearing. Blood Eclipse is pure magic."</p>
+                        <div class="user-info">
+                            <div class="user-avatar">S</div>
+                            <div>
+                                <h4 class="user-name">Sophia V.</h4>
+                                <span class="user-title">Verified Buyer — Paris</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="testimonial-card glass-card" data-index="1">
+                        <div class="user-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="user-quote">"Midnight Noir smells far more expensive than it costs. The leather and bourbon vanilla dry down is unbelievable."</p>
+                        <div class="user-info">
+                            <div class="user-avatar">D</div>
+                            <div>
+                                <h4 class="user-name">Daniel K.</h4>
+                                <span class="user-title">Collector — London</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="testimonial-card glass-card" data-index="2">
+                        <div class="user-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="user-quote">"Golden Oud is my undeniable signature fragrance. It lasts over 14 hours on coat lapels easily."</p>
+                        <div class="user-info">
+                            <div class="user-avatar">E</div>
+                            <div>
+                                <h4 class="user-name">Emma L.</h4>
+                                <span class="user-title">Verified Buyer — New York</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="testimonial-card glass-card" data-index="3">
+                        <div class="user-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="user-quote">"Luxury in a bottle. The packaging unboxing experience feels like opening high jewelry."</p>
+                        <div class="user-info">
+                            <div class="user-avatar">O</div>
+                            <div>
+                                <h4 class="user-name">Olivia M.</h4>
+                                <span class="user-title">Fashion Stylist — Milan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="circle-ctrl-btn" id="prev-test"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="circle-indicators" id="circle-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="circle-ctrl-btn" id="next-test"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: Newsletter -->
+    <section class="section-padding newsletter-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter-card glass-card text-center">
+                <div class="newsletter-glow"></div>
+                <span class="section-subtitle">PRIVATE CONCIERGE</span>
+                <h2 class="section-title">Join The Viestilo Circle</h2>
+                <p class="newsletter-desc">Receive privileged early access to rare reserve extraits, private olfactory masterclasses, and secret vault drops.</p>
+
+                <form class="newsletter-form" id="newsletter-form">
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <input type="email" placeholder="Enter your email address..." required id="newsletter-email">
+                        <button type="submit" class="btn btn-gold magnetic-btn">
+                            <span>Subscribe</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="form-feedback" id="newsletter-feedback"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo">
+                        <span class="logo-text">VIESTILO</span>
+                        <span class="logo-sub">PARIS</span>
+                    </a>
+                    <p class="footer-tagline">Celebrate the art of living in style. Viestilo captures the vibrant essence of life with refined elegance.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#hero-section">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#ingredients">Ingredients</a></li>
+                        <li><a href="#timeline">Sillage Timeline</a></li>
+                        <li><a href="#why-us">About Viestilo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#" class="modal-trigger" data-modal="shipping">Shipping Policy</a></li>
+                        <li><a href="#" class="modal-trigger" data-modal="returns">Returns & Exchanges</a></li>
+                        <li><a href="#" class="modal-trigger" data-modal="faq">Frequently Asked Questions</a></li>
+                        <li><a href="#" class="modal-trigger" data-modal="terms">Terms of Service</a></li>
+                        <li><a href="#" class="modal-trigger" data-modal="privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 VIESTILO PARFUMS. All Rights Reserved. Crafted with ultra-luxury precision.</p>
+                <div class="luxury-badge">IFRA Certified • Complimentary Shipping</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS & DRAWERS -->
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickview-modal">
+        <div class="modal-card glass-card">
+            <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="quickview-grid">
+                <div class="qv-visual-col">
+                    <img src="assets/products/blood_eclipse.jpg" alt="Quick View Perfume" class="qv-real-img" id="qv-img">
+                </div>
+                <div class="qv-info-col">
+                    <span class="fragrance-type" id="qv-type">Extrait de Parfum</span>
+                    <h2 class="qv-title" id="qv-title">Blood Eclipse</h2>
+                    <p class="qv-price" id="qv-price">₹2,499</p>
+                    <p class="qv-desc" id="qv-desc">An enigmatic fusion of Calabrian Blood Orange and French Tuberose rested on a bed of Mysore Sandalwood.</p>
+                    
+                    <div class="qv-notes-box">
+                        <h4>Fragrance Pyramid</h4>
+                        <div class="qv-notes-tags" id="qv-notes">
+                            <span class="note-tag">Blood Orange</span>
+                            <span class="note-tag">White Floral</span>
+                            <span class="note-tag">Sandalwood</span>
+                        </div>
+                    </div>
+
+                    <div class="qv-actions">
+                        <button class="btn btn-gold magnetic-btn add-cart-btn" id="qv-add-cart">Add To Cart</button>
+                        <button class="btn btn-glass wishlist-btn" id="qv-add-wishlist"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="drawer-overlay" id="cart-drawer">
+        <div class="drawer-panel glass-card">
+            <div class="drawer-header">
+                <h3>Shopping Bag (<span id="cart-drawer-count">0</span>)</h3>
+                <button class="drawer-close" id="cart-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="drawer-body" id="cart-items-container">
+                <div class="empty-drawer-msg">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <p>Your luxury bag is currently empty.</p>
+                    <a href="#collection" class="btn btn-sm btn-gold close-drawer-link">Discover Scents</a>
+                </div>
+            </div>
+
+            <div class="drawer-footer">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span class="summary-val" id="cart-subtotal">₹0</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span>Express Luxury Shipping</span>
+                    <span class="summary-val gold-accent">COMPLIMENTARY</span>
+                </div>
+                <button class="btn btn-gold btn-block magnetic-btn" id="checkout-btn">Proceed To Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="modal-overlay" id="search-modal">
+        <div class="search-panel glass-card">
+            <button class="modal-close" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+            <h3>Search Viestilo Olfactory Library</h3>
+            <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search by note (e.g. Amber, Jasmine, Oud)..." autofocus>
+            </div>
+            <div class="search-results-grid" id="search-results">
+                <!-- Dynamically populated search items -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- LIBRARIES (GSAP, ScrollTrigger, Lenis, SplitType) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+    <!-- CUSTOM SCRIPTS -->
+    <script src="js/scroll-video.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

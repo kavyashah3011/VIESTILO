@@ -1,0 +1,13 @@
+# Ignore dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Ignore scratch files
+scratch/
+tmp/
+*.log
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
